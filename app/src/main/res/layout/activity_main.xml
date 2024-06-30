@@ -1,0 +1,297 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/black"
+    tools:context=".ui.activity.MainActivity">
+
+    <com.google.android.material.imageview.ShapeableImageView
+        android:id="@+id/imgUsuario"
+        android:layout_width="64dp"
+        android:layout_height="64dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="32dp"
+        android:scaleType="centerCrop"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:shapeAppearanceOverlay="@style/Circular"
+        app:srcCompat="@drawable/img_1" />
+
+    <TextView
+        android:id="@+id/textSaudacao"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Bom dia!"
+        android:textColor="@color/MenuNavigation"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toStartOf="@+id/imgUsuario"
+        app:layout_constraintHorizontal_bias="0.198"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/imgUsuario" />
+
+    <TextView
+        android:id="@+id/textNomeUsuario"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Nome"
+        android:textColor="@color/MenuNavigation"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="@+id/textSaudacao"
+        app:layout_constraintStart_toStartOf="@+id/textSaudacao"
+        app:layout_constraintTop_toBottomOf="@+id/textSaudacao" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guidelineSaldo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.15" />
+
+    <TextView
+        android:id="@+id/textTotalSaldo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="$ 00,00"
+        android:textColor="@color/MenuNavigation"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/guidelineSaldo" />
+
+    <TextView
+        android:id="@+id/textSaldoDispo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Saldo disponível"
+        android:textColor="@color/cinza"
+        android:textSize="12sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textTotalSaldo" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guidelineBackgroud"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.25" />
+
+    <ImageView
+        android:id="@+id/imgBackgroud"
+        android:layout_width="0dp"
+        android:layout_height="660dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/guidelineBackgroud"
+        app:srcCompat="@drawable/img_2" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guidelineBtns"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.30" />
+
+    <ImageView
+        android:id="@+id/imgTransferir"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintEnd_toStartOf="@+id/imgHistorico"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/guidelineBtns"
+        app:srcCompat="@drawable/img_transferir" />
+
+    <ImageView
+        android:id="@+id/imgHistorico"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        app:layout_constraintBottom_toBottomOf="@+id/imgTransferir"
+        app:layout_constraintEnd_toStartOf="@+id/imgRecarga"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/imgTransferir"
+        app:layout_constraintTop_toTopOf="@+id/imgTransferir"
+        app:srcCompat="@drawable/img_historico" />
+
+    <ImageView
+        android:id="@+id/imgRecarga"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        app:layout_constraintBottom_toBottomOf="@+id/imgTransferir"
+        app:layout_constraintEnd_toStartOf="@+id/imgDepositar"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/imgHistorico"
+        app:layout_constraintTop_toTopOf="@+id/imgTransferir"
+        app:srcCompat="@drawable/img_recarga" />
+
+    <ImageView
+        android:id="@+id/imgDepositar"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        app:layout_constraintBottom_toBottomOf="@+id/imgTransferir"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/imgRecarga"
+        app:layout_constraintTop_toTopOf="@+id/imgTransferir"
+        app:srcCompat="@drawable/img_depositar" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guidelineCartoes"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.45" />
+
+    <TextView
+        android:id="@+id/textMeuscartoes"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:text="Meus cartões"
+        android:textColor="@color/MenuNavigation"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/guidelineCartoes" />
+
+    <TextView
+        android:id="@+id/textVerCartoes"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="32dp"
+        android:text="Ver todos"
+        android:textColor="@color/MenuNavigation"
+        app:layout_constraintBottom_toBottomOf="@+id/textMeuscartoes"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/guidelineCartoes" />
+
+    <ImageView
+        android:id="@+id/imgFundoCartoes"
+        android:layout_width="0dp"
+        android:layout_height="100dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="16dp"
+        android:scaleType="centerCrop"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textMeuscartoes"
+        app:srcCompat="@drawable/img_fundo_cards" />
+
+    <ImageView
+        android:id="@+id/imgMasterCard"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_marginStart="8dp"
+        app:layout_constraintBottom_toBottomOf="@+id/imgFundoCartoes"
+        app:layout_constraintStart_toStartOf="@+id/imgFundoCartoes"
+        app:layout_constraintTop_toTopOf="@+id/imgFundoCartoes"
+        app:srcCompat="@drawable/img_cartao_master" />
+
+    <TextView
+        android:id="@+id/textDividaCartao"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="32dp"
+        android:text="R$ 1200.34"
+        android:textColor="@color/MenuNavigation"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="@+id/imgFundoCartoes"
+        app:layout_constraintEnd_toEndOf="@+id/imgFundoCartoes"
+        app:layout_constraintTop_toTopOf="@+id/imgFundoCartoes" />
+
+    <TextView
+        android:id="@+id/textVencimento"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="20/07"
+        android:textColor="@color/cinza"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="@+id/textDividaCartao"
+        app:layout_constraintStart_toStartOf="@+id/textDividaCartao"
+        app:layout_constraintTop_toBottomOf="@+id/textDividaCartao" />
+
+<!--    Transações Recentes-->
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guidelineTrasacoes"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.63" />
+
+    <TextView
+        android:id="@+id/textTransacoesRecentes"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:text="Transações Recentes"
+        android:textColor="@color/MenuNavigation"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/guidelineTrasacoes" />
+
+    <TextView
+        android:id="@+id/textVerTransacoes"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="32dp"
+        android:text="Ver todos"
+        android:textColor="@color/MenuNavigation"
+        app:layout_constraintBottom_toBottomOf="@+id/textTransacoesRecentes"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/guidelineTrasacoes" />
+
+    <ImageView
+        android:id="@+id/imgFundoTransacoes"
+        android:layout_width="0dp"
+        android:layout_height="100dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="16dp"
+        android:scaleType="centerCrop"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textTransacoesRecentes"
+        app:srcCompat="@drawable/img_fundo_cards" />
+
+    <ImageView
+        android:id="@+id/imgIfood"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_marginStart="8dp"
+        app:layout_constraintBottom_toBottomOf="@+id/imgFundoTransacoes"
+        app:layout_constraintStart_toStartOf="@+id/imgFundoTransacoes"
+        app:layout_constraintTop_toTopOf="@+id/imgFundoTransacoes"
+        app:srcCompat="@drawable/img_cartao_master" />
+
+    <TextView
+        android:id="@+id/textDividaTransacoes"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="32dp"
+        android:text="R$ 1200.34"
+        android:textColor="@color/MenuNavigation"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="@+id/imgFundoTransacoes"
+        app:layout_constraintEnd_toEndOf="@+id/imgFundoTransacoes"
+        app:layout_constraintTop_toTopOf="@+id/imgFundoTransacoes" />
+
+    <TextView
+        android:id="@+id/textDividaData"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="29/06"
+        android:textColor="@color/cinza"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="@+id/textDividaTransacoes"
+        app:layout_constraintStart_toStartOf="@+id/textDividaTransacoes"
+        app:layout_constraintTop_toBottomOf="@+id/textDividaTransacoes" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

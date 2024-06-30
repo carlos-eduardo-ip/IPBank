@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "867828649734",
+    "project_id": "ipbank-31447",
+    "storage_bucket": "ipbank-31447.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:867828649734:android:5113ff1b3f8208f78a9887",
+        "android_client_info": {
+          "package_name": "com.projetosip.ipbank"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD6zJPlf34R2gs3aGlQLvAj7qcAlrmbVl0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

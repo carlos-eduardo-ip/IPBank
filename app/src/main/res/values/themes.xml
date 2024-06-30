@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="Base.Theme.IpBank" parent="Theme.Material3.DayNight.NoActionBar">
+        <!-- Customize your light theme here. -->
+        <!-- Primary brand color. -->
+        <item name="colorPrimary">@color/primary</item>
+        <item name="colorPrimaryVariant">@color/primaryVariation</item>
+        <item name="colorSecondary">@color/secondary</item>
+        <item name="actionOverflowButtonStyle">
+            @style/ActionOverflow
+        </item>
+
+
+        <item name="android:windowBackground">@color/primary</item>
+    </style>
+
+    <style name="ActionOverflow"
+        parent="Widget.AppCompat.ActionButton.Overflow">
+        <item name="tint">@color/white</item>
+    </style>
+    
+    <style name="Circular">
+        <item name="cornerSize">50%</item>
+    </style>
+
+    <style name="Theme.IPBank" parent="Base.Theme.IpBank" />
+</resources>
