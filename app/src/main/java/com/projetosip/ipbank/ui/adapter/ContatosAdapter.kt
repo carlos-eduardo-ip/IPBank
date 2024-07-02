@@ -4,15 +4,26 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView.Adapter
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
+import com.projetosip.ipbank.data.model.Usuario
 import com.projetosip.ipbank.databinding.ItemContatosBinding
+import com.squareup.picasso.Picasso
 
 class ContatosAdapter : Adapter<ContatosAdapter.ContatosViewHolder>(){
+
+    private var listaContatos = emptyList<Usuario>()
+    fun adicionarLista( lista: List<Usuario>){
+        listaContatos = lista
+        notifyDataSetChanged()
+    }
 
     inner class ContatosViewHolder(
         private val binding: ItemContatosBinding
     ) : ViewHolder( binding.root){
-        fun  bind(){
-
+        fun  bind(usuario: Usuario){
+            binding.textContatoNome.text = usuario.nome
+            Picasso.get()
+                .load(usuario.foto)
+                .into(binding.imageContatoFoto)
         }
     }
 
@@ -25,11 +36,12 @@ class ContatosAdapter : Adapter<ContatosAdapter.ContatosViewHolder>(){
     }
 
     override fun getItemCount(): Int {
-        TODO("Not yet implemented")
+        return listaContatos.size
     }
 
     override fun onBindViewHolder(holder: ContatosViewHolder, position: Int) {
-        TODO("Not yet implemented")
+        val usuario = listaContatos[position]
+        holder.bind(usuario)
     }
 
 }

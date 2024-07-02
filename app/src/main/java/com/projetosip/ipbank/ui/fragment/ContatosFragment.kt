@@ -73,6 +73,11 @@ class ContatosFragment : Fragment() {
                         }
                     }
                 }
+
+                //Lista de contatos (atualizar o RecyclerView)
+                if (listaContatos != null) {
+                    contatosAdapter.adicionarLista( listaContatos)
+                }
             }
     }
 
