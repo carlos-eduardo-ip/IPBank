@@ -1,4 +1,4 @@
-package com.projetosip.ipbank.utils
+package com.projetosip.ipbank.ui.activity.utils
 
 import android.app.Activity
 import android.widget.Toast

@@ -18,7 +18,7 @@ import com.projetosip.ipbank.databinding.ActivityCadastroBinding
 import com.projetosip.ipbank.data.model.Usuario
 import com.projetosip.ipbank.ui.viewmodel.CadastroViewModel
 import com.projetosip.ipbank.ui.viewmodel.factory.CadastroViewModelFactory
-import com.projetosip.ipbank.utils.exibirMensagem
+import com.projetosip.ipbank.ui.activity.utils.exibirMensagem
 
 class CadastroActivity : AppCompatActivity() {
 
@@ -98,9 +98,5 @@ class CadastroActivity : AppCompatActivity() {
             title = "Faça o seu cadastro"
             setDisplayHomeAsUpEnabled(true)
         }
-    }
-
-    private fun exibirMensagem(mensagem: String) {
-        Toast.makeText(this, mensagem, Toast.LENGTH_SHORT).show()
     }
 }

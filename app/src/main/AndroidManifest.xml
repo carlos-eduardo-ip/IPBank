@@ -6,9 +6,9 @@
         android:name="android.hardware.camera"
         android:required="true" />
 
-    <uses-permission android:name="android.permission.INTERNET"/>
-    <uses-permission android:name="android.permission.CAMERA"/>
-    <uses-permission android:name="android.permission.READ_MEDIA_IMAGES"/>
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.READ_MEDIA_IMAGES" />
 
     <application
         android:allowBackup="true"
@@ -21,16 +21,19 @@
         android:theme="@style/Theme.IPBank"
         tools:targetApi="31">
         <activity
-            android:name=".ui.activity.GerenciarCartaoActivity"
-            android:parentActivityName=".ui.activity.MainActivity"
+            android:name=".ui.activity.TransferirActivity"
             android:exported="false" />
+        <activity
+            android:name=".ui.activity.GerenciarCartaoActivity"
+            android:exported="false"
+            android:parentActivityName=".ui.activity.MainActivity" />
         <activity
             android:name=".ui.activity.SobreActivity"
             android:exported="false" />
         <activity
             android:name=".ui.activity.PerfilUsuarioActivity"
-            android:parentActivityName=".ui.activity.MainActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:parentActivityName=".ui.activity.MainActivity" />
         <activity
             android:name=".ui.activity.MainActivity"
             android:exported="false"
@@ -41,6 +44,7 @@
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
