@@ -1,5 +1,6 @@
 package com.projetosip.ipbank.ui.fragment
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
@@ -14,6 +15,7 @@ import com.google.firebase.firestore.ListenerRegistration
 import com.projetosip.ipbank.R
 import com.projetosip.ipbank.data.model.Usuario
 import com.projetosip.ipbank.databinding.FragmentContatosBinding
+import com.projetosip.ipbank.ui.activity.utils.Constantes
 import com.projetosip.ipbank.ui.adapter.ContatosAdapter
 
 class ContatosFragment : Fragment() {
@@ -38,7 +40,12 @@ class ContatosFragment : Fragment() {
             inflater, container, false
         )
 
-        contatosAdapter = ContatosAdapter()
+        contatosAdapter = ContatosAdapter{usuario ->
+            val intent = Intent(context, TransferenciaPixFragment::class.java)
+            intent.putExtra("dadosDestinatario", usuario)
+            intent.putExtra("origem", Constantes.ORIGEM_CONTATO)
+            startActivity(intent)
+        }
         binding.rvContatos.adapter = contatosAdapter
         binding.rvContatos.layoutManager = LinearLayoutManager(context)
         binding.rvContatos.addItemDecoration(

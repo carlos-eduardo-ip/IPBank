@@ -2,6 +2,7 @@ package com.projetosip.ipbank.ui.activity
 
 import android.app.AlertDialog
 import android.content.Intent
+import android.os.Build
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuInflater
@@ -14,7 +15,9 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.google.android.material.tabs.TabLayoutMediator
 import com.projetosip.ipbank.R
+import com.projetosip.ipbank.data.model.Usuario
 import com.projetosip.ipbank.databinding.ActivityTransferirBinding
+import com.projetosip.ipbank.ui.activity.utils.Constantes
 import com.projetosip.ipbank.ui.adapter.ViewPagerAdapterTransferir
 import com.projetosip.ipbank.ui.viewmodel.AuthViewModel
 import com.projetosip.ipbank.ui.viewmodel.factory.AuthViewModelFactory
@@ -24,6 +27,7 @@ class TransferirActivity : AppCompatActivity() {
     private val binding by lazy {
         ActivityTransferirBinding.inflate( layoutInflater )
     }
+    private var dadosDestination: Usuario? = null
 
     private val authViewModel: AuthViewModel by viewModels { AuthViewModelFactory(this) }
 
@@ -39,6 +43,23 @@ class TransferirActivity : AppCompatActivity() {
 
         inicializarToolbar()
         inicializarNevevacaoAbas()
+        recuperarDadosUsuarioDestinatario()
+    }
+
+    private fun recuperarDadosUsuarioDestinatario() {
+        val extras = intent.extras
+        if( extras != null){
+            val origem = extras.getString("origem")
+            if ( origem == Constantes.ORIGEM_CONTATO){
+                dadosDestination = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+                    extras.getParcelable("dadosDestinatario", Usuario::class.java)
+                }else{
+                    extras.getParcelable("dadosDestinatario")
+                }
+            }else if( origem == Constantes.ORIGEM_PIX){
+
+            }
+        }
     }
 
     private fun inicializarNevevacaoAbas() {

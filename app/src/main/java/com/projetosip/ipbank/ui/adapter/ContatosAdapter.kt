@@ -8,7 +8,9 @@ import com.projetosip.ipbank.data.model.Usuario
 import com.projetosip.ipbank.databinding.ItemContatosBinding
 import com.squareup.picasso.Picasso
 
-class ContatosAdapter : Adapter<ContatosAdapter.ContatosViewHolder>(){
+class ContatosAdapter (
+    private val onClick: (Usuario) -> Unit
+): Adapter<ContatosAdapter.ContatosViewHolder>(){
 
     private var listaContatos = emptyList<Usuario>()
     fun adicionarLista( lista: List<Usuario>){
@@ -24,6 +26,11 @@ class ContatosAdapter : Adapter<ContatosAdapter.ContatosViewHolder>(){
             Picasso.get()
                 .load(usuario.foto)
                 .into(binding.imageContatoFoto)
+
+            //Evento de clique
+            binding.clItemContato.setOnClickListener{
+                onClick(usuario)
+            }
         }
     }
 
