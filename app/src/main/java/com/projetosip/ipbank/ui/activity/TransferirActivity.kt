@@ -15,7 +15,7 @@ import androidx.core.view.WindowInsetsCompat
 import com.google.android.material.tabs.TabLayoutMediator
 import com.projetosip.ipbank.R
 import com.projetosip.ipbank.databinding.ActivityTransferirBinding
-import com.projetosip.ipbank.ui.adapter.ViewPagerAdapter
+import com.projetosip.ipbank.ui.adapter.ViewPagerAdapterTransferir
 import com.projetosip.ipbank.ui.viewmodel.AuthViewModel
 import com.projetosip.ipbank.ui.viewmodel.factory.AuthViewModelFactory
 
@@ -30,7 +30,7 @@ class TransferirActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
-        setContentView(R.layout.activity_transferir)
+        setContentView(binding.root)
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
@@ -47,7 +47,7 @@ class TransferirActivity : AppCompatActivity() {
         val viewPage = binding.viewPagerTransferir
         //Adapter
         val abas = listOf("PIX", "CONTATOS")
-        viewPage.adapter = ViewPagerAdapter(abas, supportFragmentManager, lifecycle)
+        viewPage.adapter = ViewPagerAdapterTransferir(abas, supportFragmentManager, lifecycle)
 
         tabLayout.isTabIndicatorFullWidth = true
         TabLayoutMediator(tabLayout, viewPage){ aba, posicao ->
@@ -59,7 +59,7 @@ class TransferirActivity : AppCompatActivity() {
         val toolbar = binding.includeTransferirToolbar.tbPrincipal
         setSupportActionBar(toolbar)
         supportActionBar?.apply {
-            title = "Gerenciamento de Cartão"
+            title = "Transfêrencia Pix"
             setDisplayHomeAsUpEnabled(true)
         }
 

@@ -81,6 +81,11 @@ class MainActivity : AppCompatActivity() {
                 Intent(this, GerenciarCartaoActivity::class.java)
             )
         }
+        binding.imgTransferir.setOnClickListener {
+            startActivity(
+                Intent(this, TransferirActivity::class.java)
+            )
+        }
     }
 
 }
