@@ -9,5 +9,9 @@ data class Usuario(
     var nome: String = "",
     var email: String = "",
     var foto: String = "",
-    var saldo: Double = 0.0
+    var saldo: Double = 0.0,
+    var divida: Double = 0.0,
+    var vencimento: String = "",
+    var transacao: Double = 0.0,
+    var dataTransacao: String = ""
 ) : Parcelable

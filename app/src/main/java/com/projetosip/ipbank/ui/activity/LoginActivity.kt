@@ -2,7 +2,6 @@ package com.projetosip.ipbank.ui.activity
 
 import android.content.Intent
 import android.os.Bundle
-import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
@@ -10,6 +9,7 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.projetosip.ipbank.R
 import com.projetosip.ipbank.databinding.ActivityLoginBinding
+import com.projetosip.ipbank.ui.activity.utils.exibirMensagem
 import com.projetosip.ipbank.ui.viewmodel.AuthViewModel
 import com.projetosip.ipbank.ui.viewmodel.factory.AuthViewModelFactory
 
@@ -94,9 +94,4 @@ class LoginActivity : AppCompatActivity() {
             }
         }
     }
-
-    private fun exibirMensagem(mensagem: String) {
-        Toast.makeText(this, mensagem, Toast.LENGTH_SHORT).show()
-    }
-
 }

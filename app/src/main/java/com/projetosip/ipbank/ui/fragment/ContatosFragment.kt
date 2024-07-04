@@ -15,6 +15,7 @@ import com.google.firebase.firestore.ListenerRegistration
 import com.projetosip.ipbank.R
 import com.projetosip.ipbank.data.model.Usuario
 import com.projetosip.ipbank.databinding.FragmentContatosBinding
+import com.projetosip.ipbank.ui.activity.TransferirActivity
 import com.projetosip.ipbank.ui.activity.utils.Constantes
 import com.projetosip.ipbank.ui.adapter.ContatosAdapter
 
@@ -40,12 +41,16 @@ class ContatosFragment : Fragment() {
             inflater, container, false
         )
 
-        contatosAdapter = ContatosAdapter{usuario ->
-            val intent = Intent(context, TransferenciaPixFragment::class.java)
-            intent.putExtra("dadosDestinatario", usuario)
-            intent.putExtra("origem", Constantes.ORIGEM_CONTATO)
-            startActivity(intent)
+        contatosAdapter = ContatosAdapter { usuario ->
+            // Envia os dados do contato para o TransferenciaPixFragment
+            parentFragmentManager.setFragmentResult("dadosDestinatario", Bundle().apply {
+                putParcelable("usuario", usuario)
+            })
+
+            // Muda para a aba de transferência PIX
+            (activity as TransferirActivity).binding.viewPagerTransferir.currentItem = 0
         }
+
         binding.rvContatos.adapter = contatosAdapter
         binding.rvContatos.layoutManager = LinearLayoutManager(context)
         binding.rvContatos.addItemDecoration(
@@ -64,28 +69,20 @@ class ContatosFragment : Fragment() {
     }
 
     private fun adicionarListenerContatos() {
-
-        eventoSnapshot = firestore
-            .collection("usuarios")
-            .addSnapshotListener { querySnapShot, erro ->
-                val listaContatos = mutableListOf<Usuario>()
-                val document = querySnapShot?.documents
-                document?.forEach{documentSnapshot ->
-
-                    val idUsuarioLogado = firebaseAuth.currentUser?.uid
-                    val usuario = documentSnapshot.toObject(Usuario::class.java)
-                    if (usuario != null && idUsuarioLogado != null) {
-                        if (idUsuarioLogado != usuario.id) {
-                            listaContatos.add(usuario)
-                        }
+        eventoSnapshot = firestore.collection("usuarios").addSnapshotListener { querySnapshot, _ ->
+            val listaContatos = mutableListOf<Usuario>()
+            val documentos = querySnapshot?.documents
+            documentos?.forEach { documentSnapshot ->
+                val idUsuarioLogado = firebaseAuth.currentUser?.uid
+                val usuario = documentSnapshot.toObject(Usuario::class.java)
+                if (usuario != null && idUsuarioLogado != null) {
+                    if (idUsuarioLogado != usuario.id) {
+                        listaContatos.add(usuario)
                     }
                 }
-
-                //Lista de contatos (atualizar o RecyclerView)
-                if (listaContatos != null) {
-                    contatosAdapter.adicionarLista( listaContatos)
-                }
             }
+            contatosAdapter.adicionarLista(listaContatos)
+        }
     }
 
     override fun onDestroy() {

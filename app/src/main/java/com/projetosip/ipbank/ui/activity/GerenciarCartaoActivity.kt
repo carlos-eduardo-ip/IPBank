@@ -75,17 +75,18 @@ class GerenciarCartaoActivity : AppCompatActivity() {
                 }
 
                 override fun onMenuItemSelected(menuItem: MenuItem): Boolean {
-                    when( menuItem.itemId ){
-                        R.id.item_sobre ->{
-                            Intent(this@GerenciarCartaoActivity, SobreActivity::class.java)
+                    return when (menuItem.itemId) {
+                        R.id.item_sobre -> {
+                            startActivity(Intent(this@GerenciarCartaoActivity, SobreActivity::class.java))
+                            true
                         }
                         R.id.item_sair -> {
                             deslogarUsuario()
+                            true
                         }
+                        else -> false
                     }
-                    return true
                 }
-
             }
         )
     }

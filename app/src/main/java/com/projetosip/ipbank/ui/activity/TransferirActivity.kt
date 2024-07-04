@@ -19,15 +19,16 @@ import com.projetosip.ipbank.data.model.Usuario
 import com.projetosip.ipbank.databinding.ActivityTransferirBinding
 import com.projetosip.ipbank.ui.activity.utils.Constantes
 import com.projetosip.ipbank.ui.adapter.ViewPagerAdapterTransferir
+import com.projetosip.ipbank.ui.fragment.TransferenciaPixFragment
 import com.projetosip.ipbank.ui.viewmodel.AuthViewModel
 import com.projetosip.ipbank.ui.viewmodel.factory.AuthViewModelFactory
 
 class TransferirActivity : AppCompatActivity() {
 
-    private val binding by lazy {
+    val binding by lazy {
         ActivityTransferirBinding.inflate( layoutInflater )
     }
-    private var dadosDestination: Usuario? = null
+    private var dadosDestinatario: Usuario? = null
 
     private val authViewModel: AuthViewModel by viewModels { AuthViewModelFactory(this) }
 
@@ -48,31 +49,36 @@ class TransferirActivity : AppCompatActivity() {
 
     private fun recuperarDadosUsuarioDestinatario() {
         val extras = intent.extras
-        if( extras != null){
+        if (extras != null) {
             val origem = extras.getString("origem")
-            if ( origem == Constantes.ORIGEM_CONTATO){
-                dadosDestination = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+            if (origem == Constantes.ORIGEM_CONTATO) {
+                dadosDestinatario = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
                     extras.getParcelable("dadosDestinatario", Usuario::class.java)
-                }else{
+                } else {
                     extras.getParcelable("dadosDestinatario")
                 }
-            }else if( origem == Constantes.ORIGEM_PIX){
 
+                // Envia os dados do destinatário para o TransferenciaPixFragment
+                dadosDestinatario?.let { usuario ->
+                    val fragment = supportFragmentManager.findFragmentByTag("f0") as? TransferenciaPixFragment
+                    fragment?.receberDadosDestinatario(usuario)
+                }
             }
         }
     }
 
     private fun inicializarNevevacaoAbas() {
-
         val tabLayout = binding.tabLayoutTransferir
-        val viewPage = binding.viewPagerTransferir
-        //Adapter
-        val abas = listOf("PIX", "CONTATOS")
-        viewPage.adapter = ViewPagerAdapterTransferir(abas, supportFragmentManager, lifecycle)
+        val viewPager = binding.viewPagerTransferir
 
-        tabLayout.isTabIndicatorFullWidth = true
-        TabLayoutMediator(tabLayout, viewPage){ aba, posicao ->
-            aba.text = abas[posicao]
+        viewPager.adapter = ViewPagerAdapterTransferir(this)
+
+        TabLayoutMediator(tabLayout, viewPager) { tab, position ->
+            tab.text = when (position) {
+                0 -> "PIX"
+                1 -> "CONTATOS"
+                else -> null
+            }
         }.attach()
     }
 
@@ -91,17 +97,18 @@ class TransferirActivity : AppCompatActivity() {
                 }
 
                 override fun onMenuItemSelected(menuItem: MenuItem): Boolean {
-                    when( menuItem.itemId ){
-                        R.id.item_sobre ->{
-                            Intent(this@TransferirActivity, SobreActivity::class.java)
+                    return when (menuItem.itemId) {
+                        R.id.item_sobre -> {
+                            startActivity(Intent(this@TransferirActivity, SobreActivity::class.java))
+                            true
                         }
                         R.id.item_sair -> {
                             deslogarUsuario()
+                            true
                         }
+                        else -> false
                     }
-                    return true
                 }
-
             }
         )
     }

@@ -52,6 +52,12 @@ class MainActivity : AppCompatActivity() {
                     if (usuario != null) {
                         binding.textNomeUsuario.text = usuario.nome
                         binding.textTotalSaldo.text = String.format("R$ %.2f", usuario.saldo)
+
+                        binding.textDividaCartao.text = String.format("R$ %.2f", usuario.divida)
+                        binding.textVencimento.text = usuario.vencimento
+
+                        binding.textDividaTransacoes.text = String.format("R$ %.2f", usuario.transacao)
+                        binding.textDividaData.text = usuario.dataTransacao
                         if (usuario.foto.isNotEmpty()) {
                             Picasso.get().load(usuario.foto).into(binding.imgUsuario)
                         }

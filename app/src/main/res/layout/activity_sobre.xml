@@ -5,6 +5,32 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/black"
     tools:context=".ui.activity.SobreActivity">
 
+    <include
+        android:id="@+id/includeToolbarSobre"
+        layout="@layout/toolbar_customizada"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textSobre"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:text="Nosso aplicativo de cartão de crédito e débito foi projetado com o objetivo de oferecer uma solução financeira completa, segura e de fácil utilização. Com funcionalidades que abrangem desde o controle do saldo e histórico de transações até a recarga e transferência de fundos, além do gerenciamento de cartões, ele se destaca como uma ferramenta essencial para a gestão financeira pessoal no mundo digital. Esperamos que esta apresentação tenha demonstrado o potencial e a utilidade do nosso aplicativo."
+        android:textColor="@color/MenuNavigation"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.5" />
 </androidx.constraintlayout.widget.ConstraintLayout>
